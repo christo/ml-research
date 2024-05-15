@@ -1,4 +1,7 @@
-// noinspection SpellCheckingInspection
+
+/*
+Linear algebra functions as required.
+ */
 
 /**
  * https://en.wikipedia.org/wiki/Softmax_function
@@ -9,4 +12,4 @@ function softmax(vec: number[]) {
     return vec.map(x => Math.exp(x) / denom);
 }
 
-export {softmax}
+export {softmax};

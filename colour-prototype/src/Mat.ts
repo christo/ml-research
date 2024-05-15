@@ -144,6 +144,17 @@ class Mat {
         }
         return true;
     }
+
+    randomise(lower: number, upper: number) {
+        this.data = new Array(this.rows * this.cols);
+        let range = upper - lower;
+        if (range <= 0) {
+            throw Error(`Nonpositive range: [${lower},${upper}]`);
+        }
+        for (let i = 0; i < this.data.length; i++) {
+            this.data[i] = Math.random() * (range) + lower;
+        }
+    }
 }
 
 export {Mat};

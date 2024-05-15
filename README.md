@@ -1,10 +1,10 @@
 # ML Research
 
-My notes and random code for teaching myself basic machine learning (neural networks).
+A human learning about Machine Learning.
 
-Also some code written to explore these ideas by implementing them from scratch.
+Notes from reading and some code written to explore these ideas by implementing them from scratch.
 
-[Colour Prototype](color-prototype/README.md)
+TypeScript React web app: [Colour Prototype](color-prototype/README.md)
 
 WIP: write simple neural network from scratch for detecting colour names.
 TODO: collect colour data from somewhere

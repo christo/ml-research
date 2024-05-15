@@ -1,4 +1,4 @@
-import {softmax} from "./index";
+import {softmax} from "./la";
 
 describe('softmax', () => {
     test('basic', () => {

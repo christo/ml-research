@@ -1,7 +1,7 @@
 // noinspection SpellCheckingInspection
 
 
-import {Mat} from "./mat";
+import {Mat} from "./Mat";
 
 describe('Mat basics', () => {
     test('at',  () => {
