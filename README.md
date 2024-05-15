@@ -4,9 +4,9 @@ Notes from reading and some code written to explore these ideas by implementing 
 
 TypeScript React web app: [Colour Prototype](color-prototype/README.md)
 
-WIP: write simple neural network from scratch for detecting colour names.
-TODO: collect colour data from somewhere
-TODO: reimplement colour nn to mit scratch
+* [ ] WIP: write simple neural network from scratch for detecting colour names.
+* [ ] collect colour data from somewhere
+* [ ] reimplement colour nn to mit scratch
 
 * Ongoing [Research Notes](ml-research.md)
 * [Linear Algebra Notes](linear-algebra.md)
