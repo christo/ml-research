@@ -1,6 +1,4 @@
-# ML Research
-
-A human learning about Machine Learning.
+# Human Learning Machine Learning
 
 Notes from reading and some code written to explore these ideas by implementing them from scratch.
 
