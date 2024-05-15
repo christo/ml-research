@@ -10,7 +10,7 @@ There's a meme going around to explain who wins and who loses in the AI revoluti
 
 > Above vs below The API Line is the new white collar / blue collar class distinction. 
 
-The _API Line_ demarcates two groups of people: those who tell the machines what to do and those who are told what to do by the machines. This seems to voice what many people have been thinking as they reel from the realisation that they may not be on top in the near future.
+The _API Line_ demarcates two groups of people: those who tell the machines what to do and those who are told what to do by the machines. This seems to voice what many people have been thinking as they reel from the realisation that their position may be downgraded in the near future.
 
 In this conception, the human machine interface is characterised as a single phase transition between "above" (high status) and "below" (low status), that appears to merely version bump the lingo of Marxist class distinctions. Are people's identities defined by singular membership in this binary pair? The typical example given is of a delivery driver who responds to directions provided by an app. These people are said to be below the API because they are "told what to do" by the machine whereas someone somewhere else is placing an order and this person is said to be above the API.
 
