@@ -1,6 +1,19 @@
 # Scratch Neural Network
 
-What maths operations are required to build a neural network with back propagation? 
+## TODO
+
+* [ ] test implementation in typescript
+  * [x] softmax
+  * [x] dot product
+  * [ ] colour input mechanism
+  * [ ] neural network weights and biases
+  * [ ] random initialisation
+  * [ ] chart learning
+* [ ] implement tanh for activation function 
+* [ ] implement softmax ? for normalisation
+* [ ] implement matrix dot product ? for ?
+
+## What maths operations are required to build a neural network with back propagation? 
 
 * activation functions: 
     * ReLU - Rectified Linear Unit
@@ -11,6 +24,7 @@ What maths operations are required to build a neural network with back propagati
 * back propagation
     * derivatives of each layer step
 * matrix dot product
+  * lists, multiply, add
 * softmax function
     * used as last activation function to normalise 
     * generalisation of logistic function to multiple dimensions
@@ -19,6 +33,21 @@ What maths operations are required to build a neural network with back propagati
 
 
 softmax
+
+## tanh
+
+```
+tanh(x) = (e^(2 * x) - 1) / (e^(2 * x) + 1) 
+    
+```
+
+## Working around scratch limitations
+
+* lists can only be statically referenced 
+  * for dynamic lists, pack lists together
+* no return values
+  * reserve variable for each function return value
+  * controlled invocation concurrency
 
 Scratch maths primitives:
 

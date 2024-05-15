@@ -2,6 +2,14 @@
 
 Basic notes about my current research in ML and relevant related results and technology.
 
+## Terms
+
+SNPE: Snapdragon Neural Processing Engine: Qualcomm Snapdragon software accelerated runtime for the execution of deep neural networks. https://developer.qualcomm.com/sites/default/files/docs/snpe/overview.html
+
+## The API Line
+
+Above vs below The API Line is the new white collar / blue collar class distinction.
+
 ## Implementing a Neural Network from Scratch
 
 Notes from video [Building a neural network FROM SCRATCH](https://www.youtube.com/watch?v=w8yWXqWQYmU):
