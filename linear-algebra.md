@@ -1,5 +1,6 @@
 # Linear Algebra Basics for Machine Learning
 
+
 ## Tensors, Matrices, Vectors and Scalars
 
 These are all objects from linear algebra. 

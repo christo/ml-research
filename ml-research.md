@@ -9,13 +9,14 @@ Basic notes about my current research in ML and relevant related results and tec
 ## References
 
 * https://www.quantstart.com/articles/matrix-algebra-linear-algebra-for-deep-learning-part-2/
-
-
+* [Multiplying a Matrix](https://www.mathsisfun.com/algebra/matrix-multiplying.html)
+* [Numpy Tutorial](https://numpy.org/doc/stable/user/absolute_beginners.html)
 
 ## Implementing a Neural Network from Scratch
 
 Notes from video [Building a neural network FROM SCRATCH](https://www.youtube.com/watch?v=w8yWXqWQYmU):
 
+* [Python notebook code](https://www.kaggle.com/code/wwsalmon/simple-mnist-nn-from-scratch-numpy-no-tf-keras)
 * A nonlinear activation function is applied for each layer so that weights and biases across successive layers do not simply result in a sequence of linear combinations because that could always be reduced to a single linear combination making hidden layers useless. 
 * typical nonlinear activation functions are `tanh`, `sigmoid`, `ReLU` (Rectified Linear Unit `_/`)
 * apply softmax to output 
