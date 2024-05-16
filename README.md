@@ -16,3 +16,4 @@ Colour name classifier in TypeScript/React: [Colour Prototype](color-prototype/R
 * [Research Notes](ml-research.md)
 * [Linear Algebra Notes](linear-algebra.md)
 * Idea: [Neural Network in MIT Scratch](scratch-nn.md)
+* [Ideas](ideas.md) - psychology, philosophy, politics...
