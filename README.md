@@ -4,8 +4,13 @@ Notes and code for exploring ML ideas by implementing them from scratch.
 
 Colour name classifier in TypeScript/React: [Colour Prototype](color-prototype/README.md)
 
-* [ ] WIP: write simple neural network from scratch for detecting colour names.
+## TODO
+
 * [ ] collect colour data from somewhere
+    * [ ] convert rgb data to hsv
+    * [ ] make convenient format for both ts app and anticipate loading into scratch.
+      I think `scratch-addons` lets you set lists from paste or something
+* [ ] WIP: write simple neural network from scratch for detecting colour names.
 * [ ] reimplement colour nn to mit scratch
 
 * [Research Notes](ml-research.md)
