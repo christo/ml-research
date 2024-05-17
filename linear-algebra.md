@@ -1,5 +1,10 @@
 # Linear Algebra Basics for Machine Learning
 
+## References
+
+* Article from finance education [Linear Algebra for Deep Learning](https://www.quantstart.com/articles/matrix-algebra-linear-algebra-for-deep-learning-part-2/)
+* [Multiplying a Matrix](https://www.mathsisfun.com/algebra/matrix-multiplying.html)
+* [Numpy Tutorial](https://numpy.org/doc/stable/user/absolute_beginners.html)
 
 ## Tensors, Matrices, Vectors and Scalars
 
