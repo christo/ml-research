@@ -5,9 +5,48 @@ Basic notes from self-directed research in ML and relevant related results and t
 Other documents in this repo:
 
 * [Linear Algebra Notes](linear-algebra.md) summarising relevant high school maths.  
-* [Building a NN in Scratch](scratch-nn.md) project idea to use MIT Scratch to build a neural network for classifying colours with a handful of names. This is a challenge because Scratch has very few mathematical primitives and significant performance contraints.
+* [Building a NN in Scratch](scratch-nn.md) project idea to use MIT Scratch to
+  build a neural network for classifying colours with a handful of names. This
+  is a challenge because Scratch has very few mathematical primitives and
+  significant performance contraints.
 * Loosely structured [Ideas](ideas.md) in psychology, philosophy and politics.
 
+## A Hacker's Guide to Language Models
+
+Notes from [Jeremy Howard](https://en.wikipedia.org/wiki/Jeremy_Howard_(entrepreneur)) (of [kaggle](https://www.kaggle.com/), [fast.ai](https://fast.ai/))  excellent video [A Hacker's Guide to Language Models](https://www.youtube.com/watch?v=jkrNMKz9pWU)
+
+* Code Notebook used in this video: [fastai/lm-hackers](https://github.com/fastai/lm-hackers)
+* Chat GPT capabilities can be dramatically improved by emphasising in the
+  system prompt that preliminary thinking and a step-by-step process should be
+  undertaken. The progressive thinking phase builds a context before the meat
+  of the answer which functions as scaffolding for more careful logical
+  thinking.
+* Extremely frequent orthodox problem features may overwhelm a subtly different
+  question. e.g. the river crossing goat/cabbage/wolf problem. Changing the
+  problem so that both the wolf and the goat would eat the cabbage is ignored
+  and GPT repetedly returns the traditional answer.
+* Integration with code execution can be done with API 
+    * LLM will choose to use code execution only if it decides it is required. 
+    * E.g. when asked to OCR an image, GPT implemented a script to use
+      Tesseract to do the OCR 
+* Google Bard seems to handle for example, OCR API usage internally and
+  transparently
+    * also offered a comment on the text that was OCR'd
+    * also identified the source of the text!
+* Hardware
+    * Nvidia 4090s are best but only marginally better than 3090s because
+      memory bandwidth is the bottleneck
+    * Multiple cards can be put into single machine
+    * decent performance is 4 or 5 figures USD
+* GPU services
+    * often budget/free commercial GPU services are oversubscribed
+    * there are machine sharing services like 
+* On HuggingFace 
+    * look for the GPTQ discretised variants of models - they work much faster
+      on low end hardware
+    * You can get models that have not been fine-tuned, but to fine-tune one
+      you need to provide prompts and correct responsees in the model-specific
+      prompt format, usually explained on the hugging face page for the model. 
 
 ## Implementing a Neural Network from Scratch
 
