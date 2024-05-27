@@ -4,12 +4,20 @@ Basic notes from self-directed research in ML and relevant related results and t
 
 Other documents in this repo:
 
-* [Linear Algebra Notes](linear-algebra.md) summarising relevant high school maths.  
+* [Linear Algebra Notes](linear-algebra.md) summarising implementation-relevant high school maths.  
 * [Building a NN in Scratch](scratch-nn.md) project idea to use MIT Scratch to
   build a neural network for classifying colours with a handful of names. This
   is a challenge because Scratch has very few mathematical primitives and
   significant performance contraints.
-* Loosely structured [Ideas](ideas.md) in psychology, philosophy and politics.
+* Loosely structured ML-influenced [Ideas](ideas.md) in psychology, philosophy and politics.
+
+## Frameworks / Libraries
+
+* Python is hyperdominant
+* CUDA only works on Nvidia hardware
+* JAX (new hotness)
+* Pytorch
+* Tensorflow
 
 ## A Hacker's Guide to Language Models
 
@@ -33,11 +41,12 @@ Notes from [Jeremy Howard](https://en.wikipedia.org/wiki/Jeremy_Howard_(entrepre
   transparently
     * also offered a comment on the text that was OCR'd
     * also identified the source of the text!
-* Hardware
+* Buying "Prosumer" Hardware for ML
     * Nvidia 4090s are best but only marginally better than 3090s because
       memory bandwidth is the bottleneck
     * Multiple cards can be put into single machine
     * decent performance is 4 or 5 figures USD
+    * High end Macs are slower but scrape by
 * GPU services
     * often budget/free commercial GPU services are oversubscribed
     * there are machine sharing services like 
