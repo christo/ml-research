@@ -42,11 +42,30 @@ Notes from [Jeremy Howard](https://en.wikipedia.org/wiki/Jeremy_Howard_(entrepre
     * often budget/free commercial GPU services are oversubscribed
     * there are machine sharing services like 
 * On HuggingFace 
+    * python api 
+        * `transformers` for using models
+        * `datasets` for using datasets
     * look for the GPTQ discretised variants of models - they work much faster
       on low end hardware
     * You can get models that have not been fine-tuned, but to fine-tune one
       you need to provide prompts and correct responsees in the model-specific
       prompt format, usually explained on the hugging face page for the model. 
+* Retrieval Augmented Generation (RAG) (one example)
+    * Use a model to decide which document or web page is most useful for answering a question, say a wikipedia page.
+    * Fetch wikipedia article on the subject (excluding stuff like references section)
+    * Prompt prefixed by `Answer the question with the help of the provided context`, the markdown heading "Context" followed by the wikipedia content
+    * "SentenceTransformer" 
+        * takes a document and produces a number of activations via `encode`
+        * documents that are similar will have similar activations
+        * The original prompt should have highest _cosine_similarity_ to the best document to use
+        * with a small enough list of candidate documents, you can compare the results of each `encode` call
+        * with larger numbers of candidate documents, make or use a vector database.
+            * e.g. [h2oGPT](https://github.com/h2oai/h2ogpt)
+* [axolotl](https://github.com/OpenAccess-AI-Collective/axolotl) 
+* lora is a cool thing that makes models smaller or run on smaller hardware
+* working on Mac, check out the following that work well on but are not exclusive to Mac
+    * [MLC](https://llm.mlc.ai/) _High-Performance Universal LLM Engine for Cloud and Edge_
+    * llama.cpp : has python wrapper, works with models models from hugging face, but make sure to get the GGUF model format 
 
 ## Implementing a Neural Network from Scratch
 

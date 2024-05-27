@@ -12,6 +12,13 @@
 * [ ] implement tanh for activation function 
 * [ ] implement softmax ? for normalisation
 * [ ] implement matrix dot product ? for ?
+* [ ] collect colour data from somewhere
+    * [ ] convert rgb data to hsv
+    * [ ] make convenient format for both ts app and anticipate loading into scratch.
+      I think `scratch-addons` lets you set lists from paste or something
+* [ ] WIP: write simple neural network from scratch for detecting colour names.
+* [ ] reimplement colour nn to mit scratch
+
 
 ## What maths operations are required to build a neural network with back propagation? 
 
