@@ -12,4 +12,9 @@ function softmax(vec: number[]) {
     return vec.map(x => Math.exp(x) / denom);
 }
 
-export {softmax};
+const relu: all<number> = (a: number[]) => a.map(x => x > 0 ? x : 0)
+
+export {softmax, relu};
+export type {all}
+type Vec = number[];
+export {Vec};
