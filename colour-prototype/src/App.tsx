@@ -2,7 +2,8 @@ import './App.css';
 import React, {useState} from 'react';
 
 import {HslColor, HslColorPicker} from "react-colorful";
-import {Mat} from "./Mat";
+import {ColourData, NeuralNet, NnGeometry, softmaxAf, tanhAf, TrainStatus} from "./NeuralNet";
+import {getHslData, HslData, labels} from "./rgbdata";
 
 type ColourSetter = (value: (((prevState: HslColor) => HslColor) | HslColor)) => void;
 
@@ -13,100 +14,11 @@ const ColourPicker = ({colour, setColour}: { colour: HslColor, setColour: Colour
 };
 
 function ColourCoordinates({colour}: { colour: HslColor }) {
-    return <div className="colour_coordinates">
+    return <div className="colourCoordinates">
         <div>Hue: {colour.h}</div>
         <div>Saturation: {colour.s}</div>
         <div>Luminance: {colour.l}</div>
     </div>;
-}
-
-/*
-use Matrix for weights between each layer
-and Vector for biases in each non-input layer:
-
-     w   b    w   b
-L0  -->  L1  -->  L2
-L0 input layer with N nodes
-L1 hidden layer with M nodes
-L2 output layer with Q nodes
-L0 -> L1 weights NxM matrix
-L1 -> L2 weights MxQ matrix
-
-
-
- */
-
-type Vec = number[];
-
-type NnGeometry = {
-    layers: number;
-    inputNodes: number;
-    hiddenNodes: number;
-    outputNodes: number;
-}
-class NeuralNet {
-    private nHidden: number;
-    private bHidden: Vec;
-    private nOutput: number;
-    private bOutput: Vec;
-    private wInputHidden: Mat;
-    private wHiddenOutput: Mat;
-    private nInput: number;
-
-    /**
-     * Neural network constructed with all weights and biases zeroed. Single hidden layer for now.
-     * @param nInput number of input nodes
-     * @param nHidden number of hidden nodes
-     * @param nOutput number of output nodes
-     */
-    constructor(nInput: number, nHidden: number, nOutput: number) {
-        if (nInput < 1 || nHidden < 1) {
-            throw Error("Need at least 1 input and hidden layer");
-        }
-        if (nOutput < 2) {
-            throw Error("Need at least 2 output layers");
-        }
-        if (nInput !== Math.round(nInput) || nHidden !== Math.round(nHidden) || nOutput !== Math.round(nOutput)) {
-            throw Error("Layer counts must be integral");
-        }
-        this.nInput = nInput;
-        this.nHidden = nHidden;
-        this.nOutput = nOutput;
-        this.bHidden = [];
-        this.bHidden.fill(0, 0, nHidden);
-        this.bOutput = [];
-        this.bOutput.fill(0, 0, nOutput);
-        // input layers are rows, output layers are columns
-        this.wInputHidden = new Mat(nInput, nHidden);
-        this.wInputHidden.fill(0);
-        this.wHiddenOutput = new Mat(nHidden, nOutput);
-        this.wHiddenOutput.fill(0);
-    }
-
-    geometry():NnGeometry {
-        return {
-            layers: 3,
-            inputNodes: this.nInput,
-            hiddenNodes: this.nHidden,
-            outputNodes: this.nOutput,
-        }
-    }
-
-    /**
-     * Randomise the neural network
-     */
-    randomise() {
-        // weights are between -1 and 1
-        this.wInputHidden.randomise(-1, 1);
-        this.wHiddenOutput.randomise(-1, 1);
-        // biases are between 0-1
-        for (let i = 0; i < this.nHidden; i++) {
-            this.bHidden[i] = Math.random();
-        }
-        for (let i = 0; i < this.nOutput; i++) {
-            this.bOutput[i] = Math.random();
-        }
-    }
 }
 
 interface ColourName {
@@ -133,19 +45,8 @@ function ColourNames({colourNames, setColourNames}: {
     };
     return <div>
         <div>
-        {colourNames.map(renderColourName)}
+            {colourNames.map(renderColourName)}
         </div>
-    </div>;
-}
-
-function NeuralNetInfo({neuralNet}: { neuralNet: NeuralNet }) {
-    let geometry = neuralNet.geometry();
-
-    return <div className="nnInfo">
-        <div>layers: {geometry.layers}</div>
-        <div>input nodes: {geometry.inputNodes}</div>
-        <div>hidden nodes: {geometry.hiddenNodes}</div>
-        <div>output nodes: {geometry.outputNodes}</div>
     </div>;
 }
 
@@ -166,30 +67,88 @@ function ColourPanel({colour}: { colour: HslColor }) {
     </div>;
 }
 
+export function NeuralNetInfo({geometry, trainStatus}: { geometry: NnGeometry, trainStatus: TrainStatus }) {
+    let trainClass = trainStatus.running ? "running" : "idle";
+    let trainLabel = trainStatus.running ? "running" : "idle";
+    let trainPercent = Math.round(trainStatus.nDone * 100 / trainStatus.nTotal);
+    return <div className="nnInfo">
+        <div>layers: {geometry.layers}</div>
+        <div>input nodes: {geometry.inputNodes}</div>
+        <div>hidden nodes: {geometry.hiddenNodes}</div>
+        <div>output nodes: {geometry.outputNodes}</div>
+        <div className="training">
+            <span className={trainClass}>{trainLabel}</span>
+            <span className="percent">{trainPercent}%</span>
+        </div>
+
+    </div>;
+}
+
+type ColourDataConsumer = (cd: ColourData) => void;
+
+type TrainHandler = { train: ColourDataConsumer };
+
+function mkColourData(name: string, hslData: HslData[]): ColourData {
+    let outputNames: string[] = [...labels(hslData)!];  // force non-null, spread to array
+    // TODO PERF don't map twice, use unzip
+    return {
+        name: name,
+        inputs: hslData.map(value => value.hsl),
+        outputIndices: hslData.map(value => outputNames.indexOf(value.label)),
+        outputNames: outputNames
+    }
+}
+
+const TRAINING_DATA: ColourData[] = [
+    mkColourData("main training data", getHslData())
+];
+
+function TrainingControls({train}: TrainHandler) {
+
+    return <div>
+        {TRAINING_DATA.map((cd, i) => {
+            return <button onClick={e => train(cd)}
+                           key={`cd_tb_${i}`}>
+                {cd.name}
+            </button>;
+        })}
+    </div>;
+}
+
+
 function App() {
     let startColour: HslColor = {h: 11, s: 78, l: 47};
 
     const [colour, setColour]: [HslColor, ColourSetter] = useState<HslColor>(startColour);
     const [colourNames, setColourNames] = useState<ColourName[]>(getInitialNames());
+    let nn = NeuralNet.random(3, 20, colourNames.length);
+    let [geometry, setGeometry] = useState(nn.getGeometry());
+    let [examples, setExamples] = useState<number>(0);
+    let initStatus: TrainStatus = {running: false, nDone: 0, nTotal: 0};
+    const [trainingStatus, setTrainingStatus] = useState<TrainStatus>(initStatus)
 
-    let [neuralNet, setNeuralNet] = useState(new NeuralNet(3, 20, colourNames.length));
-    neuralNet.randomise();
+    const doTrain = (data: ColourData) => {
+        nn.train(data, tanhAf, softmaxAf, setTrainingStatus);
+        setGeometry(nn.getGeometry());
+    }
+
+    // TODO test neural net on training data it hasn't seen
+    // TODO randomise neural net
 
     return (
         <div className="App">
             <header className="App-header">
-
                 <h1>Colour Prototype</h1>
             </header>
             <div className="App-body">
                 <div className="nnInput">
-                    <h2>input</h2>
                     <ColourPicker colour={colour} setColour={setColour}/>
                     <ColourCoordinates colour={colour}/>
                 </div>
                 <div className="nnInfo">
-                    <div><h2>neural net</h2>
-                        <NeuralNetInfo neuralNet={neuralNet}/>
+                    <div>
+                        <TrainingControls train={doTrain}/>
+                        <NeuralNetInfo geometry={geometry} trainStatus={trainingStatus}/>
                     </div>
                 </div>
                 <div className="nnOutput">

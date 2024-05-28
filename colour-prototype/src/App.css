@@ -29,17 +29,17 @@
   background-color: #1a1e1e;
 }
 
-.colour_coordinates {
+.colourCoordinates {
   margin: 1rem;
   font-family: monospace;
-  font-size: small;
+  font-size: smaller;
   align-items: center;
   background-color: #ffffff11;
   padding: 0.7rem;
   border-radius: 0.5rem;
 }
 
-.colour_coordinates > div {
+.colourCoordinates > div {
   padding-top: 0.4em;
 }
 
