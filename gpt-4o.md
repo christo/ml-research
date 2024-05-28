@@ -8,7 +8,7 @@ To my Australian ear these demos exhibit tone mismatched with conventions in my 
 Excess flirtation has been widely discussed on the internet. It seems as though this is only one example of a range of tonal communicative behaviours that are typically assessed by people when they interact with each other. Chat GPT-4o in the demo videos features the following behaviours where expectations drive interpersonal interactions.
 
 * opaque personality/identity modes - there is no signaled context for the agent's apparent ability to switch arbitrary personality traits
-* sycophantic or excessively obsequious - raising suspicion that the agent is attempting to inauthentically gain favour
+* sycophantic or excessively obsequious - raising suspicion that the agent has indiscriminate judgement or is attempting to inauthentically gain favour
 * excess preference for encouragement at the expense of expected frankness or honesty - this is something that is very clearly localised to regional cultures
 * inconsistent vulcanesque detachment - consistency would be a possible design goal to remind the human this is a robot but it seems at odds with OpenAI's aspirations
 * misplaced authorative tone (given the widely known incidence of hallucination)
