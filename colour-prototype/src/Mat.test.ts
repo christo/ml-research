@@ -6,18 +6,26 @@ import {Mat} from "./Mat";
 describe('Mat basics', () => {
     test('at',  () => {
         let mat: Mat = new Mat(2, 3);
-        mat.fill(0);
+        mat.fill(() => 0);
         mat.set(0, 1, 0.1);
         mat.set(1, 2, 0.5);
         expect(mat.at(1, 1)).toBeCloseTo(0);
         expect(mat.at(0, 1)).toBeCloseTo(0.1);
         expect(mat.at(1, 2)).toBeCloseTo(0.5);
     });
+    
+    test("row", () => {
+        let mat: Mat = Mat.bipolarRandom(5, 3);
+        let row3 = mat.row(3);
+        expect(mat.cols).toEqual(3);
+        expect(row3).toHaveLength(mat.cols);
+        for (let i = 0; i < row3.length; i++) {
+            expect(mat.at(3, i)).toBeCloseTo(row3[i]);
+        }
+    })
 });
 
 describe('dot product', () => {
-
-
 
     let a: Mat = new Mat(2, 3);
     a.setAll([
