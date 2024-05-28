@@ -11,7 +11,7 @@ Notes and code for exploring ML.
 
 Colour name classifier without ML library dependency [Colour Prototype](colour-prototype/README.md)
 
-* Only 2-3 input nodes
+* Only 2-3 input nodes (RGB, HSL or maybe HL)
 * output nodes on the order of 10
 * prototype Implementation in TypeScript
 
