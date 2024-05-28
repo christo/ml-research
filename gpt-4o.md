@@ -10,7 +10,7 @@ Excess flirtation has been widely discussed on the internet. It seems as though 
 * opaque personality/identity modes - there is no signaled context for the agent's apparent ability to switch arbitrary personality traits
 * sycophantic or excessively obsequious - raising suspicion that the agent has indiscriminate judgement or is attempting to inauthentically gain favour
 * excess preference for encouragement at the expense of expected frankness or honesty - this is something that is very clearly localised to regional cultures
-* inconsistent vulcanesque detachment - consistency would be a possible design goal to remind the human this is a robot but it seems at odds with OpenAI's aspirations
+* inconsistent vulcanesque detachment - consistent detachment could be one possible design goal to remind the human this is a robot but it seems at odds with OpenAI's aspirations for more personality
 * misplaced authorative tone (given the widely known incidence of hallucination)
 * sudden general tone deafness (when the surface signals of an agent are of a sophisticated person, a more stringent set of expectations are likely
 
