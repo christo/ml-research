@@ -1,3 +1,7 @@
+import {all, Vec} from "./la";
+
+2
+
 /**
  * Matrix class.
  */
@@ -6,10 +10,26 @@ class Mat {
     readonly cols: number;
     private data: any[];
 
+    static bipolarRandom(rows: number, cols: number) {
+        let m = new Mat(rows, cols);
+        m.fill((x) => Math.random() * 2 - 1);
+        return m;
+    }
+
+    static unipolarRandom(rows: number, cols: number) {
+        let m = new Mat(rows, cols);
+        m.fill((x) => Math.random());
+        return m;
+    }
+
+    /**
+     * Makes a Matrix of the given dimensions, filled with zeroes.
+     */
     constructor(rows: number, cols: number) {
         this.rows = rows;
         this.cols = cols;
         this.data = new Array(rows * cols);
+        this.fill(x => 0);
     }
 
     /**
@@ -21,6 +41,7 @@ class Mat {
         return this.data[row * this.cols + col];
     }
 
+    // noinspection JSUnusedGlobalSymbols
     /**
      * Intended for debugging only.
      */
@@ -46,6 +67,7 @@ class Mat {
      * Dot product. This is on the left hand side so it must have
      * the same number of rows as the rhs has cols.
      * @param rhs right hand side of dot product
+     * @return new matrix as result
      */
     dot(rhs: Mat): Mat {
 
@@ -103,13 +125,58 @@ class Mat {
         return result;
     }
 
+    /**
+     * Matrix addition with vector.
+     * @param rhs
+     */
+    vplus(rhs: number[]): Mat {
+        throw Error("unimplemented");
+    }
+
+    /**
+     * Applies the given linear algebra function to all elements
+     * @param f
+     * @return this
+     */
+    lf(f: all<number>): Mat {
+        // TODO decide whether to mutate or return a copy
+        this.data = f(this.data);
+        return this;
+    }
+
+    /**
+     * Get column n as a Vec.
+     */
+    col(n: number): Vec {
+        let result: Vec = []
+        for (let i = n; i < this.data.length; i += this.cols) {
+            result.push(this.data[i]);
+        }
+        return result;
+    }
+
+    /**
+     * Get row n as a Vec.
+     */
+    row(n: number): Vec {
+        let rowStart = n * this.cols;
+        return this.data.slice(rowStart, rowStart + this.cols);
+    }
+
+    /**
+     * Matrix transform.
+     */
+    transform(): void {
+        throw Error("unimplemented");
+    }
+
     isSquare(): boolean {
         return this.rows === this.cols;
     }
 
-    fill(value: number) {
+    fill(filler: (n: number, i?: number) => number): void {
         for (let i = 0; i < this.data.length; i++) {
-            this.data[i] = value;
+            this.data[i] = filler(this.data[i], i);
         }
     }
 
