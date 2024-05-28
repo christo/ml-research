@@ -9,7 +9,7 @@ Notes and code for exploring ML.
 
 ## Prototype Project
 
-Colour name classifier without ML library dependency [Colour Prototype](color-prototype/README.md)
+Colour name classifier without ML library dependency [Colour Prototype](colour-prototype/README.md)
 
 * Only 2-3 input nodes
 * output nodes on the order of 10
