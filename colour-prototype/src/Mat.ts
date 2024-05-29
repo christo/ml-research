@@ -4,7 +4,7 @@ import {all, Vec} from "./la";
 
 /**
  * Matrix class.
- */π
+ */
 class Mat {
     readonly rows: number;
     readonly cols: number;
