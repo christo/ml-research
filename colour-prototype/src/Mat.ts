@@ -13,13 +13,13 @@ class Mat {
 
     static bipolarRandom(rows: number, cols: number) {
         let m = new Mat(rows, cols);
-        m.fill((x) => Math.random() * 2 - 1);
+        m.fill((_) => Math.random() * 2 - 1);
         return m;
     }
 
     static unipolarRandom(rows: number, cols: number) {
         let m = new Mat(rows, cols);
-        m.fill((x) => Math.random());
+        m.fill((_) => Math.random());
         return m;
     }
 
@@ -30,7 +30,7 @@ class Mat {
         this.rows = rows;
         this.cols = cols;
         this.data = new Array(rows * cols);
-        this.fill(x => 0);
+        this.fill(_ => 0);
     }
 
     /**
