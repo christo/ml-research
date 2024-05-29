@@ -1,6 +1,5 @@
 import {all, Vec} from "./la";
 
-2
 
 /**
  * Matrix class.
