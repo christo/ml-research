@@ -4,10 +4,12 @@ import {all, Vec} from "./la";
 
 /**
  * Matrix class.
- */
+ */π
 class Mat {
     readonly rows: number;
     readonly cols: number;
+
+    /** Entries stored in row major order https://en.wikipedia.org/wiki/Row-_and_column-major_order */
     private data: any[];
 
     static bipolarRandom(rows: number, cols: number) {
