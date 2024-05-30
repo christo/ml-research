@@ -23,7 +23,7 @@ Other documents in this repo:
 
 Notes from [Jeremy Howard](https://en.wikipedia.org/wiki/Jeremy_Howard_(entrepreneur)) (of [kaggle](https://www.kaggle.com/), [fast.ai](https://fast.ai/))  excellent video [A Hacker's Guide to Language Models](https://www.youtube.com/watch?v=jkrNMKz9pWU)
 
-* Code Notebook used in this video: [fastai/lm-hackers](https://github.com/fastai/lm-hackers)
+* Code Notebook used in this video: [fastai/lm-hackers](https://github.com/fastai/lm-hackers) at kaggle
 * Chat GPT capabilities can be dramatically improved by emphasising in the
   system prompt that preliminary thinking and a step-by-step process should be
   undertaken. The progressive thinking phase builds a context before the meat
@@ -81,9 +81,9 @@ Notes from [Jeremy Howard](https://en.wikipedia.org/wiki/Jeremy_Howard_(entrepre
 Notes from Samson Zhang's YouTube video [Building a neural network FROM SCRATCH](https://www.youtube.com/watch?v=w8yWXqWQYmU) 
 
 * Traditional project to classify handwritten digits using [MNIST](https://en.wikipedia.org/wiki/MNIST_database) data
-* Written in Python using [Numpy](https://numpy.org/doc/stable/user/absolute_beginners.html) for linear algebra operations rather than explicitly looping over arrays of numbers.
+* Written in Python using [Numpy](https://numpy.org/doc/stable/user/absolute_beginners.html) for linear algebra operations rather than explicitly looping over arrays of numbers etc. Also uses [pandas](https://pandas.pydata.org/) for loading data.
 * [Python notebook](https://www.kaggle.com/code/wwsalmon/simple-mnist-nn-from-scratch-numpy-no-tf-keras) hosted on data science platform [Kaggle](https://www.kaggle.com/). 
-* A nonlinear activation function is applied between each layer of neurons so that weights and biases across successive layers do not simply result in a sequence of linear combinations because that could always be reduced to a single linear combination making hidden layers useless. 
+* A nonlinear activation function is applied between each layer of neurons so that weights and biases across successive layers do not simply result in a sequence of linear combinations, reducible to a single linear combination and making hidden layers pointless. 
 * Typical nonlinear activation functions used include `tanh`, `sigmoid` and `ReLU` (Rectified Linear Unit)
 * Activation function for output layer should provide a probability distribution: e.g. `softmax` 
 * Back propagation (learning step) uses derivatives of activation functions to calculate the gradient from one state of the NN (weights and biases) to a next state having higher accuracy. 
