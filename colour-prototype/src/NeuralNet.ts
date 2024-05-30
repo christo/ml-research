@@ -119,7 +119,7 @@ export class NeuralNet {
      * @param nInput number of input nodes
      * @param nHidden number of hidden nodes
      * @param nOutput number of output nodes
-     * @param alpha learning rate
+     * @param alpha learning rate in range (0, 1)
      */
     constructor(nInput: number, nHidden: number, nOutput: number, alpha = 0.1) {
         if (nInput < 1 || nHidden < 1) {
