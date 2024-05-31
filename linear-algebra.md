@@ -46,3 +46,16 @@ Dot product can be calculated when the number of rows of the first matrix equal 
 let C
 C[i,j] = sum of k from 1 to n of (A[i, k] * B[k, j])
 ```
+
+
+# Numpy
+
+```python
+import numpy as np
+
+data = np.array(foo)
+m, n = data.shape
+
+```
+* `np.array(x)`
+* `data.shape`
