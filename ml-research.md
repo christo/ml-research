@@ -91,6 +91,8 @@ Notes from Samson Zhang's YouTube video [Building a neural network FROM SCRATCH]
 
 ## Neural Network Architectures
 
+MLP: Multi-Layer Perceptron
+
 ### Convolutional Neural Networks (CNN)
 
 * Typically used for image recognition tasks 
@@ -152,5 +154,10 @@ Notes from Samson Zhang's YouTube video [Building a neural network FROM SCRATCH]
 * CapsNets aim to overcome the limitations of CNNs in handling hierarchical spatial relationships by using capsules, which are groups of neurons representing properties of an entity, such as pose and deformation.
 * Strengths: CapsNets show promise in tasks where understanding spatial relationships between parts of objects is crucial, such as object recognition in images with occlusions or transformations.
 * Weaknesses: CapsNets are relatively new and less established compared to CNNs, with fewer pre-trained models and benchmark results available.
+
+### Radial Basis Functions (RBF)
+
+Radial Basis Functions (RBF) are real-valued functions that use supervised machine learning (ML) to perform as a non-linear classifier. Its value depends on the distance between the input and a certain fixed point.
+
 
 
