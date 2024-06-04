@@ -2,6 +2,16 @@
 
 Thoughts about AI including psychological, philosophical or political aspects.
 
+## 
+
+> I want AI to do my laundry and dishes so that I can focus on art and writing, not for AI to do my art and writing so that AI can do my art and writing.
+>    -- Joanna Maciejewsko
+
+Long-established domestic automatons, the washing machine and the dishwasher, do not currently complete as much of the tasks we call "laundry" and "dishes" as current-generation LLMs presumably meet analogous standards of art and writing.
+Doing art and writing for the joy of it is under no threat. What may be under threat is getting paid for it, which is an entirely different thing. For some reason people feel very indifferent today about the destructive impact of the "word processor" on the craft of writing but throughout the late 20th Century this was a common refrain, echoing the revulsion to the typewriter of writers a generation earlier. 
+
+"They're *typists*, not writers" they'd say.
+Nevertheless, while we have somehow decided that these now familiar machines no longer threatens to suck the creative soul out of writing, today, people do seem to feel that new spectre of AI may.
 
 ## The API Line
 
