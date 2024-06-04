@@ -41,7 +41,7 @@ interface ColourData {
 interface ActFunc<T extends Mat | number[]> {
     activate(t: T): T;
 
-    backProp(t: T, learningRate: number): T;
+    backward(t: T, learningRate: number): T;
 
     name(): string;
 }
@@ -52,7 +52,7 @@ const tanhAf: ActFunc<Mat> = {
         return t.lf((xs: number[]) => xs.map(Math.tanh));
     },
 
-    backProp(t: Mat): Mat {
+    backward(t: Mat): Mat {
         // TODO implement
         return t;
     }
@@ -64,7 +64,7 @@ const reluAf: ActFunc<Mat> = {
         return t.lf(relu);
     },
 
-    backProp(t: Mat): Mat {
+    backward(t: Mat): Mat {
         return t.lf((xs) => xs.map(x => x > 0 ? 1 : 0));
     }
 };
@@ -74,9 +74,8 @@ const softmaxAf: ActFunc<Vec> = {
     activate(v: Vec): Vec {
         return softmax(v);
     },
-    backProp(t: Vec): Vec {
-        // TODO implement
-        return t;
+    backward(t: Vec): Vec {
+        throw new Error("unimplemented")
     }
 };
 
@@ -86,10 +85,13 @@ export interface TrainStatus {
     nTotal: number;
 }
 
+/** Multi-Layer Perceptron (MLP) with hard-coded 3 (1 hidden) layer architecture */
 export class NeuralNet {
-    private nHidden: number;
+    private readonly nHidden: number;
+    /** hidden layer biases */
     private bHidden: Vec;
-    private nOutput: number;
+    private readonly nOutput: number;
+    /** output layer biases */
     private bOutput: Vec;
     /**
      * Weights from input to hidden layer w1
