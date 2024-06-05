@@ -1,18 +1,16 @@
 
-// typescript port of karpathy's micrograd
+// typescript port of karpathy's micrograd https://github.com/karpathy/micrograd
 
 class Value {
     data: number;
     grad: number;
     private op: string;
     private prev: Set<Value> = new Set();
-    private backward: () => void;
 
     constructor(data: number, children: Value[] = [], op: string = "") {
         this.data = data;
         this.grad = 0;
         this.op = op;
-        this.backward = () => {};
     }
 
     add(otherThing: Value | number) {
@@ -41,5 +39,51 @@ class Value {
             this.grad += (other * this.data**(other-1)) * out.grad
         }
         return out;
+    }
+
+    relu() {
+        let out = new Value(this.data < 0 ? 0 : this.data, [this], "ReLU");
+        out.backward = () => {
+            this.grad += ((out.data > 0) ? 1 : 0) * out.grad;
+        }
+        return out;
+    }
+
+    backward() {
+
+        // topological order all of the children in the graph
+        let topo:Value[] = [];
+        let visited = new Set<Value>();
+        let buildTopo = (v: Value) => {
+            if (!visited.has(v)) {
+                visited.add(v);
+                for (const child of this.prev) {
+                    buildTopo(child);
+                }
+                topo.push(v);
+            }
+        }
+
+        // go one variable at a time and apply the chain rule to get its gradient
+        this.grad = 1;
+        topo.reverse().forEach((v: Value) => v.backward())
+    }
+
+    neg() {
+        return this.mul(-1);
+    }
+
+    sub(otherThing: Value | number) {
+        const other = otherThing instanceof Value ? otherThing : new Value(otherThing);
+        return this.add(other.neg());
+    }
+
+    div(otherThing: Value | number) {
+        const other = otherThing instanceof Value ? otherThing : new Value(otherThing);
+        return this.mul(other.pow(-1));
+    }
+
+    toString() {
+        return `Value(data=${this.data}, grad=${this.grad}`;
     }
 }
