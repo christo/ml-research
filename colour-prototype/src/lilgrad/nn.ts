@@ -10,9 +10,7 @@ import {Value} from "./engine";
 
 abstract class Module {
     zeroGrad() {
-        for (const p of this.parameters()) {
-            p.grad = 0;
-        }
+        this.parameters().forEach(p => p.grad = 0);
     }
 
     abstract parameters(): Value[];
@@ -45,7 +43,7 @@ class Neuron extends Module {
      */
     activate(x: NV[]): Value {
         if (x.length !== this.w.length) {
-            throw Error(`expected length of x (${x.length}) to be same as w: ${this.w.length}`)
+            throw Error(`expected length of x (${x.length}) to match weights (${this.w.length})`)
         }
         // w (*) x + b where (*) is a dot product
         let act = this.w.map((wi, i) => wi.mul(x[i]))
