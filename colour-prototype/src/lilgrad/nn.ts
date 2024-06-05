@@ -95,13 +95,14 @@ class MultiLayerPerceptron extends Module {
     /**
      *
      * @param nin number of inputs
-     * @param nouts outputs, sizes of all the layers
+     * @param nouts outputs, sizes of each layer
      */
-    constructor(nin: number, nouts: Value[]) {
+    constructor(nin: number, nouts: number[]) {
         super();
+        let sz = [nin, ...nouts]
         this.layers = []
         for (let i = 0; i < nouts.length; i++) {
-
+            this.layers.push(new Layer(sz[i], sz[i+1]))
         }
     }
 
