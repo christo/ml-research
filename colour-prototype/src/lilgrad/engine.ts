@@ -1,6 +1,10 @@
 
 // typescript port of karpathy's micrograd https://github.com/karpathy/micrograd
+// as explained in https://www.youtube.com/watch?v=VMj-3S1tku0
 
+/**
+ * Stores a single scalar value and its gradient
+ */
 class Value {
     data: number;
     grad: number;
@@ -10,7 +14,8 @@ class Value {
     constructor(data: number, children: Value[] = [], op: string = "") {
         this.data = data;
         this.grad = 0;
-        this.op = op;
+        this.prev = new Set(children);
+        this.op = op; // the op that produced this node, for graphvis / debugging / etc.
     }
 
     add(otherThing: Value | number) {
@@ -50,20 +55,16 @@ class Value {
     }
 
     backward() {
-
         // topological order all of the children in the graph
         let topo:Value[] = [];
         let visited = new Set<Value>();
         let buildTopo = (v: Value) => {
             if (!visited.has(v)) {
                 visited.add(v);
-                for (const child of this.prev) {
-                    buildTopo(child);
-                }
+                this.prev.forEach(buildTopo);
                 topo.push(v);
             }
         }
-
         // go one variable at a time and apply the chain rule to get its gradient
         this.grad = 1;
         topo.reverse().forEach((v: Value) => v.backward())
