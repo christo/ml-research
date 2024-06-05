@@ -1,20 +1,21 @@
-
 // typescript port of karpathy's micrograd https://github.com/karpathy/micrograd
 // as explained in https://www.youtube.com/watch?v=VMj-3S1tku0
 
 // the port is pretty close. differences mostly reflect language differences in
 // constraints and occasionally preferring ts idioms
 
-class Module {
+
+import type {NV} from "./engine"
+import {Value} from "./engine";
+
+abstract class Module {
     zeroGrad() {
         for (const p of this.parameters()) {
             p.grad = 0;
         }
     }
 
-    parameters(): Value[] {
-        return []
-    }
+    abstract parameters(): Value[];
 }
 
 class Neuron extends Module {
@@ -42,9 +43,9 @@ class Neuron extends Module {
      * The length of x should be equal to the number of inputs
      * @param x
      */
-    activate(x: Value[]): Value {
+    activate(x: NV[]): Value {
         if (x.length !== this.w.length) {
-            throw Error(`expected length of x to be same as w: ${this.w.length}`)
+            throw Error(`expected length of x (${x.length}) to be same as w: ${this.w.length}`)
         }
         // w (*) x + b where (*) is a dot product
         let act = this.w.map((wi, i) => wi.mul(x[i]))
@@ -64,12 +65,13 @@ class Layer extends Module {
     /**
      * @param nin number  of inputs i.e. dimensionality
      * @param nout number of outputs i.e. neurons
+     * @param nonlin if the neuron activations should be nonlinear
      */
-    constructor(nin: number, nout: number) {
+    constructor(nin: number, nout: number, nonlin: boolean) {
         super();
         this.neurons = [];
         for (let i = 0; i < nout; i++) {
-            this.neurons.push(new Neuron(nin))
+            this.neurons.push(new Neuron(nin, nonlin))
         }
     }
 
@@ -78,14 +80,12 @@ class Layer extends Module {
      * returns a single Value instead of an array of 1
      * @param x
      */
-    activate(x: Value[]): Value[] {
+    activate(x: NV[]): Value[] {
         return this.neurons.map(n => n.activate(x))
     }
 
     parameters(): Value[] {
-        let params: Value[] = []
-        this.neurons.forEach(n => n.parameters().forEach(np => params.push(np)));
-        return params;
+        return this.neurons.flatMap(n => n.parameters());
     }
 }
 
@@ -102,18 +102,22 @@ class MultiLayerPerceptron extends Module {
         let sz = [nin, ...nouts]
         this.layers = []
         for (let i = 0; i < nouts.length; i++) {
-            this.layers.push(new Layer(sz[i], sz[i+1]))
+            let nonlin = i != nouts.length - 1;
+            this.layers.push(new Layer(sz[i], sz[i + 1], nonlin))
         }
     }
 
-    activate(x: Value[]): Value[] {
+    activate(x: NV[]): Value[] {
+        let ret: Value[] = [];
         this.layers.forEach(layer => {
-            x = layer.activate(x); // sic
+            ret = layer.activate(x); // sic
         });
-        return x;
+        return ret;
     }
 
     parameters(): Value[] {
-        return super.parameters();
+        return this.layers.flatMap(layer => layer.parameters());
     }
 }
+
+export {Neuron, Layer, MultiLayerPerceptron};

@@ -2,6 +2,8 @@
 // typescript port of karpathy's micrograd https://github.com/karpathy/micrograd
 // as explained in https://www.youtube.com/watch?v=VMj-3S1tku0
 
+type NV = Value | number;
+
 /**
  * Stores a single scalar value and its gradient
  */
@@ -88,3 +90,6 @@ class Value {
         return `Value(data=${this.data}, grad=${this.grad}`;
     }
 }
+
+export {Value};
+export type {NV};
