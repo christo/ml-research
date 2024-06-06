@@ -1,4 +1,3 @@
-
 // typescript port of karpathy's micrograd https://github.com/karpathy/micrograd
 // as explained in https://www.youtube.com/watch?v=VMj-3S1tku0
 
@@ -41,24 +40,20 @@ class Value {
     }
 
     pow(other: number) {
-        let out = new Value(this.data**other, [this], `**${other}`)
-        out.backward = () => {
-            this.grad += (other * this.data**(other-1)) * out.grad
-        }
+        let out = new Value(this.data ** other, [this], `**${other}`)
+        out.backward = () => this.grad += (other * this.data ** (other - 1)) * out.grad
         return out;
     }
 
     relu() {
         let out = new Value(this.data < 0 ? 0 : this.data, [this], "ReLU");
-        out.backward = () => {
-            this.grad += ((out.data > 0) ? 1 : 0) * out.grad;
-        }
+        out.backward = () => this.grad += ((out.data > 0) ? 1 : 0) * out.grad
         return out;
     }
 
     backward() {
         // topological order all of the children in the graph
-        let topo:Value[] = [];
+        let topo: Value[] = [];
         let visited = new Set<Value>();
         let buildTopo = (v: Value) => {
             if (!visited.has(v)) {
