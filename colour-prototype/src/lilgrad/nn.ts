@@ -1,12 +1,10 @@
 // typescript port of karpathy's micrograd https://github.com/karpathy/micrograd
 // as explained in https://www.youtube.com/watch?v=VMj-3S1tku0
 
-// the port is pretty close. differences mostly reflect language differences in
-// constraints and occasionally preferring ts idioms
+// Port differences mostly reflect language constraints and occasional preferences for idiomatic ts
 
 
-import type {NV} from "./engine"
-import {Value} from "./engine";
+import {NV, Value} from "./engine"
 
 abstract class Module {
     zeroGrad() {
@@ -55,6 +53,11 @@ class Neuron extends Module {
     parameters(): Value[] {
         return [...this.w, this.b];
     }
+
+
+    toString(): string {
+        return `${this.nonlin ? "ReLU" : "Linear"} Neuron(${this.w.length})`;
+    }
 }
 
 class Layer extends Module {
@@ -84,6 +87,10 @@ class Layer extends Module {
 
     parameters(): Value[] {
         return this.neurons.flatMap(n => n.parameters());
+    }
+
+    toString(): string {
+        return `Layer of (${this.neurons.map(n => n.toString()).join(", ")})`;
     }
 }
 
@@ -115,6 +122,11 @@ class MultiLayerPerceptron extends Module {
 
     parameters(): Value[] {
         return this.layers.flatMap(layer => layer.parameters());
+    }
+
+
+    toString(): string {
+        return `MLP of [${this.layers.map(l => l.toString()).join(", ")}]`;
     }
 }
 
