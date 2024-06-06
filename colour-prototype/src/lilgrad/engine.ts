@@ -82,7 +82,7 @@ class Value {
     }
 
     toString() {
-        return `Value(data=${this.data}, grad=${this.grad}`;
+        return `Value(data=${this.data}, grad=${this.grad})`;
     }
 }
 
