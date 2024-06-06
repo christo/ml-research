@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "d3": "^7.9.0",
     "react": "^18.3.1",
     "react-colorful": "^5.6.1",
     "react-dom": "^18.3.1",
@@ -14,7 +15,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "demo": "npx ts-node src/lilgrad/demos.ts"
   },
   "eslintConfig": {
     "extends": [
@@ -38,9 +40,9 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^29.5.12",
     "@types/node": "^20.12.12",
     "@types/react": "^18.3.2",
-    "@types/react-dom": "^18.3.0",
-    "@types/jest": "^29.5.12"
+    "@types/react-dom": "^18.3.0"
   }
 }
