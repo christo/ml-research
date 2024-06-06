@@ -15,9 +15,12 @@ function demo1() {
     // desired targets on matching corresponding xs
     let ys = [1.0, -1.0, -1.0, 1.0];
 
+    console.log(`parameters: ${n.parameters().length}`);
+
     console.log("first round predictions");
     let ypred = xs.map(x => n.activate(x));
     console.log(ypred.toString());
+
 
     console.log("total loss");
     function calculateLoss() {
