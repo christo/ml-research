@@ -21,7 +21,7 @@ class Neuron extends Module {
     private readonly nonlin: boolean;
 
     /**
-     *
+     * The number of inputs should be the same as the number of neurons in the previous layer.
      * @param nin number of inputs
      * @param nonlin true iff activation should be nonlinear
      */
@@ -43,7 +43,7 @@ class Neuron extends Module {
         if (x.length !== this.w.length) {
             throw Error(`expected length of x (${x.length}) to match weights (${this.w.length})`)
         }
-        // w (*) x + b where (*) is a dot product
+        // w (*) x + b where (*) is a dot product, sum to produce raw activation
         let act = this.w.map((wi, i) => wi.mul(x[i]))
             .reduce((acc, x) => acc.add(x), this.b);
         // in the video he uses tanh, here if nonlin, he uses relu
@@ -65,7 +65,7 @@ class Layer extends Module {
 
     /**
      * @param nin number  of inputs i.e. dimensionality
-     * @param nout number of outputs i.e. neurons
+     * @param nout number of outputs i.e. neurons in the layer
      * @param nonlin if the neuron activations should be nonlinear
      */
     constructor(nin: number, nout: number, nonlin: boolean) {
@@ -113,9 +113,9 @@ class MultiLayerPerceptron extends Module {
     }
 
     activate(x: NV[]): Value[] {
-        let ret: Value[] = [];
+        let ret: Value[] = x as Value[];
         this.layers.forEach(layer => {
-            ret = layer.activate(x); // sic
+            ret = layer.activate(ret); // sic
         });
         return ret;
     }

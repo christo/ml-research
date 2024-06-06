@@ -12,10 +12,16 @@ function demo1() {
         [0.5, 1.0, 1.0],
         [1.0, 1.0, -1.0]
     ];
-    let ys = [1.0, -1.0, -1.0, 1.0]; // desired targets
+    // desired targets on matching corresponding xs
+    let ys = [1.0, -1.0, -1.0, 1.0];
+
+    console.log("first round predictions");
     let ypred = xs.map(x => n.activate(x));
-    console.log(ypred);
-    // let loss = ys.map(y => )
+    console.log(ypred.toString());
+
+    console.log("losses");
+    let loss = ys.map((ygt, i) => (ypred[i][0].sub(ygt)).pow(2));
+    console.log(loss);
 }
 
 demo1();
