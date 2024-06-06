@@ -11,12 +11,14 @@ class Value {
     grad: number;
     private op: string;
     private prev: Set<Value> = new Set();
+    private label: string;
 
-    constructor(data: number, children: Value[] = [], op: string = "") {
+    constructor(data: number, children: Value[] = [], op: string = "", label='') {
         this.data = data;
         this.grad = 0;
         this.prev = new Set(children);
         this.op = op; // the op that produced this node, for graphvis / debugging / etc.
+        this.label = label;
     }
 
     add(otherThing: Value | number) {
