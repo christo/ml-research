@@ -83,7 +83,7 @@ class Value {
         return this.mul(other.pow(-1));
     }
 
-    toString() {
+    toString(): string {
         return `Value(data=${this.data}, grad=${this.grad})`;
     }
 }
