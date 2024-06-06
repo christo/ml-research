@@ -1,5 +1,5 @@
 import {Mat} from "./Mat";
-import {Vec, relu, softmax} from "./la";
+import {relu, softmax, Vec} from "./la";
 import {HslColor} from "react-colorful";
 
 /*
@@ -105,17 +105,6 @@ export class NeuralNet {
     private wHiddenOutput: Mat;
     private nInput: number;
 
-    static random(nInput: number, nHidden: number, nOutput: number): NeuralNet {
-        let nn = new NeuralNet(nInput, nHidden, nOutput);
-        // random weights
-        nn.wInputHidden.randomise(-1, 1);
-        nn.wHiddenOutput.randomise(-1, 1);
-        // random biases
-        nn.bHidden.map(() => Math.random());
-        nn.bOutput.map(() => Math.random());
-        return nn;
-    }
-
     /**
      * Neural network constructed with all weights and biases zeroed. Single hidden layer for now.
      * @param nInput number of input nodes
@@ -146,6 +135,17 @@ export class NeuralNet {
         // input layers are rows, output layers are columns
         this.wInputHidden = new Mat(nInput, nHidden);
         this.wHiddenOutput = new Mat(nHidden, nOutput);
+    }
+
+    static random(nInput: number, nHidden: number, nOutput: number): NeuralNet {
+        let nn = new NeuralNet(nInput, nHidden, nOutput);
+        // random weights
+        nn.wInputHidden.randomise(-1, 1);
+        nn.wHiddenOutput.randomise(-1, 1);
+        // random biases
+        nn.bHidden.map(() => Math.random());
+        nn.bOutput.map(() => Math.random());
+        return nn;
     }
 
     setInput(inputMatrix: Mat) {
@@ -200,9 +200,9 @@ export class NeuralNet {
      * @param outputAf output layer activation function (should be probability dist)
      * @param monitor callback for TrainingStatus updates
      */
-    train(data: ColourData, hiddenAf: ActFunc<Mat>, outputAf: ActFunc<number[]>, monitor: (status: TrainStatus) => void){
+    train(data: ColourData, hiddenAf: ActFunc<Mat>, outputAf: ActFunc<number[]>, monitor: (status: TrainStatus) => void) {
         // TODO implement
-        let status: TrainStatus ={
+        let status: TrainStatus = {
             running: false,
             nTotal: data.inputs.length,
             nDone: data.inputs.length,

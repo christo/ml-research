@@ -4,7 +4,7 @@
 import {Mat} from "../Mat";
 
 describe('Mat basics', () => {
-    test('at',  () => {
+    test('at', () => {
         let mat: Mat = new Mat(2, 3);
         mat.fill(() => 0);
         mat.set(0, 1, 0.1);
@@ -13,7 +13,7 @@ describe('Mat basics', () => {
         expect(mat.at(0, 1)).toBeCloseTo(0.1);
         expect(mat.at(1, 2)).toBeCloseTo(0.5);
     });
-    
+
     test("row", () => {
         let mat: Mat = Mat.bipolarRandom(5, 3);
         let row3 = mat.row(3);

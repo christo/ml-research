@@ -11,6 +11,16 @@ class Mat {
     /** Entries stored in row major order https://en.wikipedia.org/wiki/Row-_and_column-major_order */
     private data: any[];
 
+    /**
+     * Makes a Matrix of the given dimensions, filled with zeroes.
+     */
+    constructor(rows: number, cols: number) {
+        this.rows = rows;
+        this.cols = cols;
+        this.data = new Array(rows * cols);
+        this.fill(_ => 0);
+    }
+
     static bipolarRandom(rows: number, cols: number) {
         let m = new Mat(rows, cols);
         m.fill((_) => Math.random() * 2 - 1);
@@ -21,16 +31,6 @@ class Mat {
         let m = new Mat(rows, cols);
         m.fill((_) => Math.random());
         return m;
-    }
-
-    /**
-     * Makes a Matrix of the given dimensions, filled with zeroes.
-     */
-    constructor(rows: number, cols: number) {
-        this.rows = rows;
-        this.cols = cols;
-        this.data = new Array(rows * cols);
-        this.fill(_ => 0);
     }
 
     /**

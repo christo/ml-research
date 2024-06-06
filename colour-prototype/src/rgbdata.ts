@@ -1,4 +1,4 @@
-import {Hsl, rgb255ToHsl, rgbToHsl} from "./colours";
+import {Hsl, rgb255ToHsl} from "./colours";
 
 export function labels(data: RgbData[] | HslData[]): Set<string> {
     return new Set(data.map((x) => x.label.toLocaleLowerCase()));

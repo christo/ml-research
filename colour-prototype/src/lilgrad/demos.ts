@@ -3,7 +3,7 @@ import {MultiLayerPerceptron} from "./nn";
 function demo1() {
     console.log("running demo1");
     let x = [2.0, 3.0, -1.0];
-    let n =new MultiLayerPerceptron(3, [4, 4, 1]);
+    let n = new MultiLayerPerceptron(3, [4, 4, 1]);
     let res1 = n.activate(x);
     console.log(res1);
     let xs = [

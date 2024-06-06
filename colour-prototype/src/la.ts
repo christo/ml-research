@@ -1,10 +1,9 @@
-
 /*
 Linear algebra functions as required.
  */
 
 /** Function on all elements of an array implementation of a tensor of T */
-type all<T> = (ts:T[]) => T[];
+type all<T> = (ts: T[]) => T[];
 
 /**
  * https://en.wikipedia.org/wiki/Softmax_function
