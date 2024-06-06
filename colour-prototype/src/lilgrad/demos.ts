@@ -19,9 +19,17 @@ function demo1() {
     let ypred = xs.map(x => n.activate(x));
     console.log(ypred.toString());
 
-    console.log("losses");
-    let loss = ys.map((ygt, i) => (ypred[i][0].sub(ygt)).pow(2));
-    console.log(loss);
+    console.log("total loss");
+    function calculateLoss() {
+        return ys.map((ygt, i) => (ypred[i][0].sub(ygt)).pow(2))
+            .reduce((acc, v) => acc.add(v));
+    }
+    let loss = calculateLoss();
+    console.log(loss.data);
+    console.log("backprop");
+    loss.backward();
+    console.log(`grad of 0-0-0: ${n.layers[0].neurons[0].w[0].grad}`);
+
 }
 
 demo1();

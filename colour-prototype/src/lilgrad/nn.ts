@@ -61,7 +61,7 @@ class Neuron extends Module {
 }
 
 class Layer extends Module {
-    private neurons: Neuron[];
+    neurons: Neuron[];
 
     /**
      * @param nin number  of inputs i.e. dimensionality
@@ -95,7 +95,7 @@ class Layer extends Module {
 }
 
 class MultiLayerPerceptron extends Module {
-    private layers: Layer[];
+    layers: Layer[];
 
     /**
      *
