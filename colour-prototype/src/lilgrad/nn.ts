@@ -21,7 +21,8 @@ class Neuron extends Module {
     private readonly nonlin: boolean;
 
     /**
-     * The number of inputs should be the same as the number of neurons in the previous layer.
+     * The number of inputs should be the same as the number of neurons in the previous
+     * layer.
      * @param nin number of inputs
      * @param nonlin true iff activation should be nonlinear
      */
