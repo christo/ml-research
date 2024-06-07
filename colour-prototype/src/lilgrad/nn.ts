@@ -1,7 +1,7 @@
 // typescript port of karpathy's micrograd https://github.com/karpathy/micrograd
 // as explained in https://www.youtube.com/watch?v=VMj-3S1tku0
 
-// Port differences mostly reflect language constraints and occasional preferences for idiomatic ts
+// Port differences mostly reflect language constraints and occasionally idioms
 
 
 import {NV, Value} from "./engine"
