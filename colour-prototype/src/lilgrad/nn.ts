@@ -40,7 +40,8 @@ class Neuron extends Module {
      * @param x
      */
     activate(x: NV[]): Value {
-        if (x.length !== this.w.length) {throw Error(`x.length:${x.length} !== this.w.length:${this.w.length}`)
+        if (x.length !== this.w.length) {
+            throw Error(`x.length:${x.length} !== this.w.length:${this.w.length}`);
         }
         // w (*) x + b where (*) is a dot product, sum to produce raw activation
         let act = this.w.map((wi, i) => wi.mul(x[i]))
