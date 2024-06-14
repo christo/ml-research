@@ -4,6 +4,7 @@ import React, {useState} from 'react';
 import {HslColor, HslColorPicker} from "react-colorful";
 import {ColourData, NeuralNet, NnGeometry, softmaxAf, tanhAf, TrainStatus} from "./NeuralNet";
 import {getHslData, HslData, labels} from "./rgbdata";
+import {MultiLayerPerceptron} from "./lilgrad/nn";
 
 type ColourSetter = (value: (((prevState: HslColor) => HslColor) | HslColor)) => void;
 
@@ -65,6 +66,15 @@ function ColourPanel({colour}: { colour: HslColor }) {
     return <div className="colourPanel" style={{backgroundColor: toCss(colour)}}>
         &nbsp;
     </div>;
+}
+
+export function NeuralNetInfoFromLilGrad({mlp}:{mlp: MultiLayerPerceptron}) {
+    return <div>
+        {mlp.parameters().map((value, i) => {
+            return <p key={`mlp_p_${i}`}>{value.toString()}</p>
+        })}
+    </div>
+
 }
 
 export function NeuralNetInfo({geometry, trainStatus}: { geometry: NnGeometry, trainStatus: TrainStatus }) {
@@ -157,6 +167,10 @@ function App() {
                         <ColourNames colourNames={colourNames} setColourNames={setColourNames}/>
                     </div>
                 </div>
+            </div>
+            <div className="App-body karpathy">
+                <div><h5>Lil Grad</h5></div>
+                <div className="graph"></div>
             </div>
         </div>
     );
