@@ -34,7 +34,7 @@ Voice to voice interaction over the phone with an LLM needs to accomodates:
   * predefined and dynamic pronunciation tuning
     * phone numbers and other codes
     * domain names (don't typically have capitalisation to help disambiguate acronym parts e.g. vmware.com)
-    * 
+    * parametised speaking rate
   * paraverbal augmentation:
     * sighs, laughing, singing
 * Core LLM chat fine-tuning. This may be canonical instructions like what Llama open source models are fine tuned with. Alternatives may include:
