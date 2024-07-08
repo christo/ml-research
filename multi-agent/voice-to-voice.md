@@ -1,6 +1,16 @@
 # Voice to Voice Interactions
 
-Voice to voice interaction over the phone with an LLM needs to accomodates:
+Voice to voice interaction over the phone with an LLM needs to accomodate various features. 
+Some of these things can be embedded in the system prompt. Other things would need to be a
+part of the surrounding code infrastructure and some could be implemented as a separate agent. 
+
+For example, it may be useful to have a separate agent do sentiment analysis, either outgoing or incoming. Another agent could interpret audio quality which should interact with voice recognition so that bad phone line noise doesn't result in futile attempts to transcribe noise as voice.
+
+## Open Questions
+
+Can whisper run voice recognition on remote audio channel only or will phone call audio routing setups always furnish only mixed audio?
+
+## Feature Wish List
 
 * session establishment and context reloading based on receiving or making a call
 * static reference material
@@ -41,6 +51,9 @@ Voice to voice interaction over the phone with an LLM needs to accomodates:
   * Character embodiment in a defined 1 on 1 conversation
   * Functions defined below
   * Asides with returns, e.g. "oh that reminds me of a story ... well anyway" (return)
+  * Interpret conversational interaction instructions
+    * repeat slowly -> change speaking speed
+    * request for change in emotional state (decision to comply or resist)
 * Functions (potentially implemented with other LLM) for:
   * triggering and tracing emotional state
     * anger, frustration, shock, fear, empathy, etc.
