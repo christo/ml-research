@@ -18,6 +18,8 @@ Other documents in this repo:
 * JAX (new hotness)
 * Pytorch
 * Tensorflow
+* llama.cpp
+* whisper.cpp
 
 ## A Hacker's Guide to Language Models
 
