@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# from https://github.com/ggerganov/llama.cpp/blob/master/examples/server/chat.sh
+# code from https://github.com/ggerganov/llama.cpp/blob/master/examples/server/chat.sh
+# depends on jq
 
 API_URL="${API_URL:-http://127.0.0.1:8080}"
 
@@ -29,6 +30,7 @@ format_prompt() {
     printf "\n### Human: %s\n### Assistant: %s" "${CHAT[@]}" "$1"
 }
 
+# call server to get tokens for $1
 tokenize() {
     curl \
         --silent \
@@ -39,6 +41,7 @@ tokenize() {
     | jq '.tokens[]'
 }
 
+# calculate the number of tokens in $INSTRUCTION
 N_KEEP=$(tokenize "${INSTRUCTION}" | wc -l)
 
 chat_completion() {
