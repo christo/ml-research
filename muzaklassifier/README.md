@@ -161,3 +161,11 @@ coordination application would be just as applicable to any temporal media
 classification including instrument sounds, sound effects, spoken word (such as
 for transcription) or video (though this would require a different media
 front-end).
+
+
+## References
+
+* [https://openai.com/index/jukebox/ and https://www.youtube.com/watch?v=AS1l4Xlgm_k]
+* [https://github.com/huggingface/audio-transformers-course]
+* [https://github.com/openai/jukebox]
+* [https://github.com/facebookresearch/audiocraft]
