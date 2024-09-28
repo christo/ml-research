@@ -15,5 +15,6 @@ Colour name classifier without ML library dependency [Colour Prototype](colour-p
 * output nodes on the order of 10
 * prototype Implementation in TypeScript
 
+## Muzaklassifier
 
-
+Music classifier idea [Muzaklassifier](muzaklassifier/README.md) (pre-larval stage)
