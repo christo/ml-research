@@ -45,6 +45,14 @@ likewise if a claim for a tagged class is asserting that the class does not
 apply (i.e. this is not techno). Claims that invert other claims can be reduced
 to an inverted claim about the underlying class application.
 
+## Bootstrapping
+
+Starting a project to train a model with such broad application may be
+infeasible, in which case an ideal starting point could be to focus exclusively
+on a narrow set of musical genres such as electronic dance music. Growing out
+from such a focus to a wider range of electronic music and/or dance music could
+work well.
+
 ## Gamification
 
 Because there's so much human work to do to classify audio, perhaps a way of
