@@ -165,7 +165,14 @@ front-end).
 
 ## References
 
-* [https://openai.com/index/jukebox/ and https://www.youtube.com/watch?v=AS1l4Xlgm_k]
+* [https://openai.com/index/jukebox/] and
+[https://www.youtube.com/watch?v=AS1l4Xlgm_k]
 * [https://github.com/huggingface/audio-transformers-course]
-* [https://github.com/openai/jukebox]
-* [https://github.com/facebookresearch/audiocraft]
+* [OpenAI Jukebox](https://github.com/openai/jukebox) and their
+[https://openai.com/index/jukebox/](blog)
+* Meta's [audiocraft](https://github.com/facebookresearch/audiocraft) and
+[MusicGen](https://huggingface.co/spaces/facebook/MusicGen) on HuggingFace. also
+[these repos](https://github.com/craftmine1000?tab=repositories)
+* Google's
+[MusicLM](https://blog.google/technology/ai/musiclm-google-ai-test-kitchen/) on
+its AI Test Kitchen.
