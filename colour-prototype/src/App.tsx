@@ -52,10 +52,9 @@ function ColourNames({colourNames, setColourNames}: {
 }
 
 function getInitialNames() {
-    let INITIAL_NAMES = [
+    return [
         "red", "yellow", "pink", "green", "purple", "orange", "blue"
     ].map((n, i) => ({name: n, score: i}) as ColourName).sort(compareColourNameByScore);
-    return INITIAL_NAMES;
 }
 
 function ColourPanel({colour}: { colour: HslColor }) {
@@ -170,7 +169,7 @@ function App() {
             </div>
             <div className="App-body karpathy">
                 <div><h5>Lil Grad</h5></div>
-                <div className="graph"></div>
+                <div className="graph">TODO</div>
             </div>
         </div>
     );
