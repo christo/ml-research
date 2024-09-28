@@ -87,6 +87,23 @@ considered in the beginning. Not only will tags vary by language but different
 locales may divide music differently. It's possible that initial model training
 is best done monolingual.
 
+Some tag proposals could be prospective, more like questions. Also, music
+contributions could be gamified.
+
+### Back End
+
+In order to ensure validity of training data, some insight into the coverage of
+collected assertions needs to be surfaced in an admin interface.
+
+Guesses made by users which did not match the popular vote do need to be
+distinguishable but it may still be useful to train the model with them such
+that multimodal distributions can be captured and members of a cluster can
+query the model for inferences on novel audio for a judgement aligned with their
+local group, even in cases where there is another dominant mode.
+
+* [ ] research classifier quantification and scaling in both pre and post
+training situations
+
 ### Points
 
 Players must be incentivised to opt out of making a judgement (or recording
