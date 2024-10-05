@@ -6,11 +6,14 @@
 
 # TODO make paths work by referencing from this script's directory
 
-
+SCRIPT_DIR=$(dirname "$0")
+export SCRIPT_DIR
 llama-cli \
     --hf-repo lykong-fdu/Meta-Llama-3-70B-Instruct-Q4_K_M-GGUF \
     --hf-file meta-llama-3-70b-instruct-q4_k_m.gguf \
     -t 16 \
-    -f prompts/granny-scamtarget.txt \
+    -f ../prompts/granny-scamtarget.txt \
+    -r "caller:" --in-prefix " " \
+    --in-suffix "ethel:" \
     -i 
 
