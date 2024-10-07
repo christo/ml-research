@@ -1,2 +1,6 @@
 node_modules
 *.log
+llama.cpp
+model_cache
+whisper.cpp
+/llama/models/
