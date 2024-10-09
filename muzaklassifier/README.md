@@ -135,6 +135,7 @@ the canonical term for this?)
 ## Claim Types
 
 * Human tag application
+* Tag alias
 * Algorithmic tag application
 * External tag dataset
 * Music identity dataset (this could be modelled with tags)
@@ -152,6 +153,27 @@ exclusive. However, the fact that the inner segment is focused on a narrower
 extent means that no such contradiction can be valid. Likewise, a tune could be
 tagged as a medley but individual song segments would not be a medley.
 
+### Tag Examples
+
+Categories and tags can be hierarchical in a strict, singly-rooted universal
+taxonomy. They are case insensitive but rendered in canonical case-form for
+proper nouns. Tags can have aliases. Text classes on input and output need to be
+mapped so that UI can use given tag alias. This should enable i18n and l10n.
+
+```bnf
+fulltag: category [ "/" category ]* ":" tag [ "/" tag ]*
+```
+
+* *emotion:inspiring*
+* *genre:techno*
+* *genre:tech-house*
+* *instrument:sitar*
+* *culture:Bulgarian*
+* *Spotify/energy:0.9* Spotify energy algorithm
+* *Spotify/tempo:120* Spotify energy algorithm
+
+* [ ] find open source algorithm for music analysis to automatically tag
+
 ## Generality
 
 The system for RLHF (Reinforcement Learning with Human Feedback) here is
@@ -162,16 +184,14 @@ classification including instrument sounds, sound effects, spoken word (such as
 for transcription) or video (though this would require a different media
 front-end).
 
-
 ## References
 
-* [https://openai.com/index/jukebox/] and
-[https://www.youtube.com/watch?v=AS1l4Xlgm_k]
-* [https://github.com/huggingface/audio-transformers-course]
+* [https://www.youtube.com/watch?v=AS1l4Xlgm_k]
+* [audio-transformers-course](https://github.com/huggingface/audio-transformers-course)
 * [OpenAI Jukebox](https://github.com/openai/jukebox) and their
 [https://openai.com/index/jukebox/](blog)
 * Meta's [audiocraft](https://github.com/facebookresearch/audiocraft) and
-[MusicGen](https://huggingface.co/spaces/facebook/MusicGen) on HuggingFace. also
+[MusicGen](https://huggingface.co/spaces/facebook/MusicGen) on HuggingFace.
 [these repos](https://github.com/craftmine1000?tab=repositories)
 * Google's
 [MusicLM](https://blog.google/technology/ai/musiclm-google-ai-test-kitchen/) on
