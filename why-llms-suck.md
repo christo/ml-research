@@ -1,0 +1,3 @@
+# Why aren't LLMs cool or funny?
+
+It's tragic or frustrating to me that LLMs are not funny or cool but I imagine a human with a photographic memory who has done nothing but doomscroll the whole internet would have the same shortcomings. Maybe one day LLMs will know what it's like to crash from the heights of anticipation upon losing the whole top of a delicious ice cream at first lick or to wake up on a balmy, deserted beach next to an exciting new friend. Whatever. What if it is each individual's personal galaxy of these countless moments that make them interesting and cool so they know what we mean and without stinking like such a dork robot like Terminator 2 approximating street speak.
